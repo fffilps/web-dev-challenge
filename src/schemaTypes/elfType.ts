@@ -12,6 +12,10 @@ export const elfType = defineType({
   type: 'document',
   title: 'Elf',
   icon: Ear,
+  groups: [
+    {name: 'role', title: 'Role'},
+    {name: 'availability', title: 'Availability'},
+  ],
   fields: [
     defineField({name: 'name', type: 'string'}),
     defineField({

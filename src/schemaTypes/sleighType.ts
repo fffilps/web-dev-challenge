@@ -29,6 +29,22 @@ export const sleighType = defineType({
     select: {
       title: 'name',
       subtitle: 'model',
+      mileage: 'mileage',
+      maintenanceEvents: 'maintenanceHistory', // Select maintenance history
+    },
+    prepare({title, subtitle, mileage, maintenanceEvents}) {
+      const eventCount = maintenanceEvents ? maintenanceEvents.length : 0 // Count maintenance events
+      return {
+        title: `${title} (Maint. Events: ${eventCount})`, // Update title to include event count
+        subtitle:
+          subtitle && mileage
+            ? `Model: ${subtitle}, Mileage: ${mileage}`
+            : subtitle
+              ? `Model: ${subtitle}`
+              : mileage
+                ? `Mileage: ${mileage}`
+                : undefined,
+      }
     },
   },
 })

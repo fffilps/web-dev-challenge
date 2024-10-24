@@ -12,10 +12,10 @@ export const warehouseType = defineType({
     defineField({name: 'capacity', type: 'number'}),
   ],
   preview: {
-    select: {locationName: 'locationName', address: 'address'},
-    prepare({locationName, address}) {
+    select: {locationName: 'locationName', address: 'address', capacity: 'capacity'},
+    prepare({locationName, address, capacity}) {
       return {
-        title: locationName,
+        title: `${locationName} (Capacity: ${capacity})`,
         subtitle: address,
       }
     },
